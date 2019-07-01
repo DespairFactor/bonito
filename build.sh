@@ -21,7 +21,7 @@ export LD_LIBRARY_PATH=${HOME}/android/clang/clang-r353983d/lib64:$LD_LIBRARY_PA
 DEFCONFIG="bonito_defconfig"
 
 # Kernel Details
-VER=".V1"
+VER=".V2"
 
 # Paths
 KERNEL_DIR=`pwd`

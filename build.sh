@@ -21,13 +21,13 @@ export LD_LIBRARY_PATH=${HOME}/android/clang/clang-r353983d/lib64:$LD_LIBRARY_PA
 DEFCONFIG="bonito_defconfig"
 
 # Kernel Details
-VER=".V2"
+VER=".V3"
 
 # Paths
 KERNEL_DIR=`pwd`
-REPACK_DIR="${HOME}/android/AK-OnePone-AnyKernel2"
-PATCH_DIR="${HOME}/android/AK-OnePone-AnyKernel2/patch"
-MODULES_DIR="${HOME}/android/AK-OnePone-AnyKernel2/modules"
+REPACK_DIR="${HOME}/android/AK-OnePone-AnyKernel3"
+PATCH_DIR="${HOME}/android/AK-OnePone-AnyKernel3/patch"
+MODULES_DIR="${HOME}/android/AK-OnePone-AnyKernel3/modules"
 ZIP_MOVE="${HOME}/android/AK-releases"
 ZIMAGE_DIR="${HOME}/android/bonito/out/arch/arm64/boot/"
 
@@ -45,8 +45,8 @@ function clean_all {
 
 function make_kernel {
 		echo
-		rm -rf ~/android/AnyKernel2/dtbo.img
-		rm -rf ~/android/AnyKernel2/Image.lz4-dtb
+		rm -rf ~/android/AnyKernel3/dtbo.img
+		rm -rf ~/android/AnyKernel3/Image.lz4-dtb
 		make O=out CC=clang $DEFCONFIG
 		make O=out CC=clang -j10
 
@@ -62,13 +62,13 @@ function make_dtb {
 }
 
 function make_boot {
-		cp -vr $ZIMAGE_DIR/Image.lz4-dtb ~/android/AnyKernel2/Image.lz4-dtb
-        cp -vr $ZIMAGE_DIR/dtbo.img ~/android/AnyKernel2/dtbo.img
+		cp -vr $ZIMAGE_DIR/Image.lz4-dtb ~/android/AnyKernel3/Image.lz4-dtb
+        cp -vr $ZIMAGE_DIR/dtbo.img ~/android/AnyKernel3/dtbo.img
 }
 
 
 function make_zip {
-		cd ~/android/AnyKernel2/
+		cd ~/android/AnyKernel3/
 		zip -r9 `echo $AK_VER`.zip *
 		mv  `echo $AK_VER`.zip $ZIP_MOVE
 		cd $KERNEL_DIR
